@@ -1,0 +1,30 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Shadowsocks账号分享{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="shortcut icon" href="{{ url_for('static', filename = 'blog/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename = 'blog/favicon.ico') }}" type="image/x-icon">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="page-header">
+            <h1>Shadowsocks账号分享</h1>
+            <h4>最后更新日期：{{ last_date }}</h4>
+        </div>
+        <p>此处SSR账号每周一0点更新，禁止用于长时间、大流量使用，如下载大文件或播放视频。</p>
+        <p>SSR服务器地址均为：128.1.159.112</p>
+        <p>基配置：</p>
+        
+        <textarea class="form-control" rows="2">ssr://MTI4LjEuMTU5LjExMjo2NTUzNTphdXRoX2FlczEyOF9zaGExOmFlcy0yNTYtY2ZiOnRsczEuMl90aWNrZXRfYXV0aDovP29iZnNwYXJhbT0mcHJvdG9wYXJhbT0mcmVtYXJrcz1kR1Z6ZEEmZ3JvdXA9</textarea>
+        <p>可先使用基配置链接，再自行修改端口及密码进行连接。</p>
+        <table class="table">
+            <tr><td>端口</td><td>密码</td><td>SSR链接</td></tr>
+            {% for i in account_data.items() %}
+                <tr><td>{{ i[0] }}</td><td>{{ i[1] }}</td><td></td></tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}    
+
